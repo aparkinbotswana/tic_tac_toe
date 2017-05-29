@@ -1,0 +1,65 @@
+p {
+  border: 5px solid red;
+  font: 30px;
+}
+
+.row1{
+  border: 2px solid black;
+  padding-bottom: 12%;
+  padding-left: 20px;
+  /*float: left;*/
+  width: 12%;
+  margin: auto;
+}
+
+.row2{
+  border: 2px solid black;
+  padding-bottom: 12%;
+  padding-left: 20px;
+  /*float: left;*/
+  width: 12%;
+  margin: auto;
+
+}
+
+.row3{
+  border: 2px solid black;
+  padding-bottom: 12%;
+  padding-left: 20px;
+  /*float: left;*/
+  width: 12%;
+  margin: auto;
+
+}
+
+#row1Left {
+  border: 5px solid red;
+ 
+}
+
+
+#row1Middle{
+  border: 5px solid red;
+}
+
+
+#row1Right{
+}
+
+#row2Left{
+}
+
+#row2Middle{
+}
+
+#row2Right{
+}
+
+#row3Left{
+}
+
+#row3Middle{
+}
+
+#row3Right{
+}
