@@ -2,7 +2,6 @@
 
 
 $(document).ready(function() {
-  console.log("linked");
 
   var player = true
   var x = "X"
@@ -11,29 +10,66 @@ $(document).ready(function() {
   var outcome = ["_", "_", "_", "_", "_", "_", "_", "_", "_"];
 
   var playGame = function(e) {
-    // console.log(outcome);
-    var i;
-
-    if (player === true) {
-      // console.log("player 1 turn " + player);
-      $(this).html(x)
-      i = parseInt(this.id);
-      outcome[i] = 'X';
-
-      console.log(outcome);
+    // encompassing if statement checking if a player has already taken a move in a box and prevents other player from changing it
+    if ($(this).html() === x || $(this).html() === o) {
+      return
 
     } else {
-      // console.log("player 2 turn " + player);
-      $(this).html(o)
-      i = parseInt(this.id);
-      outcome[i] = 'O';
 
-      console.log(outcome);
+      var i;
 
+      if (player === true) {
+        $(this).html(x)
+        i = parseInt(this.id);
+        outcome[i] = x;
+
+        console.log(outcome);
+
+      } else {
+        $(this).html(o)
+        i = parseInt(this.id);
+        outcome[i] = o;
+
+        console.log(outcome);
+
+      }
+
+      // var gameEnd = function() {
+      //   switch (outcome) {
+      //     case *IN THIS SPOT YOU HAVE THE VICTORY CONDITION for X || O*:
+      //
+      //       break;
+      //     case expression:
+      //
+      //       break;
+      //     case expression:
+      //
+      //       break;
+      //     case expression:
+      //
+      //       break;
+      //     case expression:
+      //
+      //       break;
+      //     case expression:
+      //
+      //       break;
+      //     case expression:
+      //
+      //       break;
+      //     case expression:
+      //
+      //       break;
+      //     default:
+      //       console.log("Draw Bitches!");
+      //   }
+      // }
+
+      // gameEnd();
+
+      // cycles through the player 1 and player 2.
+      if (player) {player = false} else player = true;
     }
-
-    // cycles through the player 1 and player 2.
-    if (player){player=false}else player = true;
 
 
   }
@@ -60,10 +96,6 @@ $(document).ready(function() {
 
 // DONE----------------------------
 // Render a game board in the browser
-
-
-
-
 
 
 // Switch turns between X and O (or whichever markers you select)
