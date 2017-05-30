@@ -1,46 +1,64 @@
 
-$(document).ready(function(){
-console.log("linked");
+$(document).ready(function() {
+  console.log("linked");
+
+  var player = true
+
+  var playGame = function(e) {
 
 
+    // returns back the specific box ID within the grid that has been click and stores the position/tag within the 'turn' variable. Consider if this needs to be turned into a Jquery object.
+    var $playerChoice = this.id;
+    console.log(this.id);
+    console.log(player);
+
+    if (player === true) {
+      console.log("player 1 turn " + player);
+
+    } else {
+      console.log("player 2 turn " + player);
+
+    }
+
+    // cycles through the player 1 and player 2.
+    if (player){player=false}else player = true;
+  }
 
 
-
+  $(".square").on("click", playGame);
 
 
 });
 
 
-
-//
-// "hand me your phone," load up the game, and play a quick round!
 //
 // Big Goals
 //
-// Build a web application from scratch, without a starter codebase
-// Use your programming skills to map out the game logic for a simple game like Tic Tac Toe
-// Separate HTML, CSS, and JavaScript files in your application
-// Build an application to a spec that someone else gives you
+// DONE----------------------------
 // Build a dynamic game that allows two players to compete
+
 // Craft a readme.md file that explains your app to the world
 // Technical Requirements
 //
 // Your app must:
 //
 
+// DONE----------------------------
 // Render a game board in the browser
+
+
+
+
 
 
 // Switch turns between X and O (or whichever markers you select)
 
 
-// Visually display which side won if a player gets three in a row or show a draw/"cat’s game" if neither wins
+
+// Visually display which side won if a player gets three in a row or show a draw/"cat’s game" if neither wins ---------------------Perhaps include a hidden div which only shows when the game has finished with relevant message
 
 // DONE--------------------------------
 // Include separate HTML / CSS / JavaScript files
-
-
-// Stick with KISS (Keep It Simple Stupid) and DRY (Don't Repeat Yourself) principles
 
 
 // Use Javascript for DOM manipulation
@@ -49,7 +67,6 @@ console.log("linked");
 // Deploy your game online, where the rest of the world can access it
 
 
-// Use semantic markup for HTML and CSS (adhere to best practices)
 
 
 
