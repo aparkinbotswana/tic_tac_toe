@@ -22,13 +22,20 @@ body,
 
 }
 
+/*.row1, .row2, .row3{
+  background-color: #e5e5e5;
+  flex: 5;
+  display: flex;
+  flex-direction: row;
+}*/
+
 .row{
   background-color: #e5e5e5;
   flex: 5;
   display: flex;
   flex-direction: row;
-  /*border: 2px solid black;*/
 }
+
 
 .square {
   background-color: #cacaca;
