@@ -7,16 +7,13 @@ $(document).ready(function() {
   var playGame = function(e) {
 
 
-    // returns back the specific box ID within the grid that has been click and stores the position/tag within the 'turn' variable. Consider if this needs to be turned into a Jquery object.
-    var $playerChoice = this.id;
-    console.log(this.id);
-    console.log(player);
-
     if (player === true) {
-      console.log("player 1 turn " + player);
+      // console.log("player 1 turn " + player);
+      $(this).html("X")
 
     } else {
-      console.log("player 2 turn " + player);
+      // console.log("player 2 turn " + player);
+      $(this).html("O")
 
     }
 
