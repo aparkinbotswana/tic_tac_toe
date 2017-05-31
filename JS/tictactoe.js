@@ -4,71 +4,51 @@
 $(document).ready(function() {
 
   var player = true
-  var x = "X"
-  var o = "O"
 
   var outcome = ["_", "_", "_", "_", "_", "_", "_", "_", "_"];
+  // var winCondition =
 
   var playGame = function(e) {
     // encompassing if statement checking if a player has already taken a move in a box and prevents other player from changing it
-    if ($(this).html() === x || $(this).html() === o) {
+    if ($(this).html() === "X" || $(this).html() === "O") {
       return
 
     } else {
 
       var i;
 
+      // if (player) {player = false} else player = true;
+
       if (player === true) {
-        $(this).html(x)
+        $(this).html("X")
         i = parseInt(this.id);
-        outcome[i] = x;
+        // pushes the players move into an array which assesses victory conditions
+        outcome[i] = "X";
 
         console.log(outcome);
 
       } else {
-        $(this).html(o)
-        i = parseInt(this.id);
-        outcome[i] = o;
+        if (outcome[4] === "X") {
+          outcome[2] = "O";
+          $("#2").html("O");
 
-        console.log(outcome);
+        }
+
+
+
+        // $(this).html("O")
+        // i = parseInt(this.id);
 
       }
 
-      // var gameEnd = function() {
-      //   switch (outcome) {
-      //     case *IN THIS SPOT YOU HAVE THE VICTORY CONDITION for X || O*:
-      //
-      //       break;
-      //     case expression:
-      //
-      //       break;
-      //     case expression:
-      //
-      //       break;
-      //     case expression:
-      //
-      //       break;
-      //     case expression:
-      //
-      //       break;
-      //     case expression:
-      //
-      //       break;
-      //     case expression:
-      //
-      //       break;
-      //     case expression:
-      //
-      //       break;
-      //     default:
-      //       console.log("Draw Bitches!");
-      //   }
+      // I have eight victory conditions and 1 draw condition. players will only be notified of a draw if all moves have been taken. a means to do this is by perhaps looking at the inner html of all square classes to make sure that it has one thing in it or the other. once that criteria has been met, and if nobody has won, that is when a draw will be called.
+
+      // if (outcome [1] +) {
+      //   console.log("Winner!");
       // }
 
-      // gameEnd();
-
       // cycles through the player 1 and player 2.
-      if (player) {player = false} else player = true;
+
     }
 
 
@@ -97,7 +77,7 @@ $(document).ready(function() {
 // DONE----------------------------
 // Render a game board in the browser
 
-
+// DONE----------------------------
 // Switch turns between X and O (or whichever markers you select)
 
 
@@ -107,10 +87,10 @@ $(document).ready(function() {
 // DONE--------------------------------
 // Include separate HTML / CSS / JavaScript files
 
-
+// DONE-------------------------------
 // Use Javascript for DOM manipulation
 
-
+// DONE-------------------------------
 // Deploy your game online, where the rest of the world can access it
 
 
