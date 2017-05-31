@@ -3,10 +3,19 @@
 
 $(document).ready(function() {
 
-  var player = true
+  // var player = true
 
   var outcome = ["_", "_", "_", "_", "_", "_", "_", "_", "_"];
-  // var winCondition =
+
+  var winCondition = [
+    [0, 1, 2], 
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]];
 
   var playGame = function(e) {
     // encompassing if statement checking if a player has already taken a move in a box and prevents other player from changing it
@@ -19,27 +28,24 @@ $(document).ready(function() {
 
       // if (player) {player = false} else player = true;
 
-      if (player === true) {
-        $(this).html("X")
-        i = parseInt(this.id);
-        // pushes the players move into an array which assesses victory conditions
-        outcome[i] = "X";
+      // if (player === true) {
 
-        console.log(outcome);
+      // interaction with DOM to visually represent "X" on the gameboard.
+      $(this).html("X")
+      i = parseInt(this.id);
+      // pushes the players move into an array which assesses victory conditions
+      outcome[i] = "X";
 
-      } else {
-        if (outcome[4] === "X") {
-          outcome[2] = "O";
-          $("#2").html("O");
-
+      // if statement evaluates players move and plays reactively to it depending where they have moved.
+      for (var i = 0; i < outcome.length; i++) {
+        if (outcome[i] === '_') {
+          outcome[i] = 'O';
+          $('#' + i.toString()).html("O");
+          break;
         }
-
-
-
-        // $(this).html("O")
-        // i = parseInt(this.id);
-
       }
+
+
 
       // I have eight victory conditions and 1 draw condition. players will only be notified of a draw if all moves have been taken. a means to do this is by perhaps looking at the inner html of all square classes to make sure that it has one thing in it or the other. once that criteria has been met, and if nobody has won, that is when a draw will be called.
 
@@ -56,6 +62,7 @@ $(document).ready(function() {
 
 
   $(".square").on("click", playGame);
+
 
 
 });
