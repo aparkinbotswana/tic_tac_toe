@@ -8,7 +8,7 @@ $(document).ready(function() {
   var outcome = ["_", "_", "_", "_", "_", "_", "_", "_", "_"];
 
   var winCondition = [
-    [0, 1, 2], 
+    [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
     [0, 3, 6],
@@ -16,6 +16,15 @@ $(document).ready(function() {
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6]];
+
+  var gameWon = function(){
+    for (var i = 0; i < winCondition.length; i++) {
+      condition = winCondition[i]
+      for (var j = 0; j < condition.length; j++) {
+        
+      }
+    }
+  }
 
   var playGame = function(e) {
     // encompassing if statement checking if a player has already taken a move in a box and prevents other player from changing it
@@ -45,15 +54,11 @@ $(document).ready(function() {
         }
       }
 
-
+      gameWon();
 
       // I have eight victory conditions and 1 draw condition. players will only be notified of a draw if all moves have been taken. a means to do this is by perhaps looking at the inner html of all square classes to make sure that it has one thing in it or the other. once that criteria has been met, and if nobody has won, that is when a draw will be called.
 
-      // if (outcome [1] +) {
-      //   console.log("Winner!");
-      // }
 
-      // cycles through the player 1 and player 2.
 
     }
 
