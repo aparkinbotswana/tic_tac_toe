@@ -30,16 +30,16 @@ $(document).ready(function() {
         var position = condition[j];
         win.push(outcome[position]);
         var final = win.join('')
-        console.log(condition);
         if (final === "XXX") {
           $("#gameMessageX").fadeIn()
+          console.log("win");
           return true;
 
         } else if (final === "OOO") {
           $("#gameMessageO").fadeIn()
           return true;
 
-        } else if (turns === 5) {
+        } else if (turns === 5 && j === 7) {
           $("#gameMessageDraw").fadeIn()
           return false;
         }
