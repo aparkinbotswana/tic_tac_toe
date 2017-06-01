@@ -49,8 +49,6 @@ $(document).ready(function() {
   }
 
 
-
-
   var playGame = function() {
     //  if statement checking if a player has already taken a move in a box and prevents them or the computer  from changing it
     if ($(this).html() === "X" || $(this).html() === "O") {
@@ -71,45 +69,71 @@ $(document).ready(function() {
       return;  // don't let computer play its turn!
     }
 
-    // if statement evaluates players move and plays reactively to it depending where they have moved.
 
-    // check for certain better-than-average moves and make them if possible
+    // following if statement and function evaluates players move and plays reactively to it.
 
-    // 1. check if center id available and take it if so
+    var checkForPossibleWin = function(){
+// console.log("are you there?");
+      for (var i = 0; i < winCondition.length; i++) {
+        var mayWinCheck = winCondition[i]
+        var mayWin = []
+// console.log("i am here");
+          for (var j = 0; j < mayWinCheck.length; j++) {
+            var check = mayWinCheck[j];
+            mayWin.push(outcome[check]);
+            mayWin.sort();
+            var joinMayWin = mayWin.join("")
+            console.log(joinMayWin);
+// console.log("are you really?");
+            if (joinMayWin === "XX_") {
+              for (var k = 0; k < mayWinCheck.length; k++) {
+console.log("I promise");
+console.log(mayWinCheck[k]);
+                if (outcome[check] === "_") {
+                  console.log(outcome);
+                  console.log(outcome[check]);
+console.log("ummmm?");
 
+                  outcome[k] = 'O';
+                  console.log(outcome[k]);
+                  $('#' + j.toString()).html("O");
+console.log("are you still there?");
+                }
+              }
+            }
+          }
+        }
+      }
 
-    // 2. check if any corner is available and take one
+      var randomMove = function() {
+        for (var i = 0; i < outcome.length; i++) {
+          if (outcome[i] === '_') {
+            outcome[i] = 'O';
+            $('#' + i.toString()).html("O");
+            break; // consider putting this at the end of the checkPossibleWin function as a backup move if it will not execute after the function has been called.
+          }
+        }
+      }
 
-    for (var i = 0; i < outcome.length; i++) {
 
       if (outcome[4] === '_') {
         outcome[4] = 'O';
         $('#' + "4").html("O");
-        break;
 
-      } else if (outcome[2] === '_') {
+      } else if (turns === 1 && outcome[2] === '_') {
         outcome[2] = 'O';
         $('#' + "2").html("O");
-        break;
 
-      }
+      // } else if (turns >= 2) {
+      //   checkForPossibleWin();
 
-      else if (outcome[i] === '_') {
-        outcome[i] = 'O';
-        $('#' + i.toString()).html("O");
-        break;
+      } else {
+        randomMove()
       }
-    }
+      
     gameOver = gameWon(); //computer won!
-
-
-
-
+    console.log(outcome);
   }  //playGame end function
 
-
   $(".square").on("click", playGame);
-
-
-
 });
