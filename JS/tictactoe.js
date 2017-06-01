@@ -39,7 +39,9 @@ $(document).ready(function() {
           $("#gameMessageO").fadeIn()
           return true;
 
-        } else if (turns === 5 && j === 7) {
+        } else if (turns === 5 && i === 7) {
+          console.log("draw?");
+
           $("#gameMessageDraw").fadeIn()
           return false;
         }
@@ -130,7 +132,7 @@ console.log("are you still there?");
       } else {
         randomMove()
       }
-      
+
     gameOver = gameWon(); //computer won!
     console.log(outcome);
   }  //playGame end function
