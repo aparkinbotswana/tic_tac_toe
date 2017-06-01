@@ -6,7 +6,9 @@ $(document).ready(function() {
   // var player = true
 
   var outcome = ["_", "_", "_", "_", "_", "_", "_", "_", "_"];
-  var turns = 0
+  var turns = 0;
+  var gameOver = false;
+
   var winCondition = [
     [0, 1, 2],
     [3, 4, 5],
@@ -34,18 +36,21 @@ $(document).ready(function() {
           $("#gameMessageX").fadeIn()
 
           console.log("Winnder!");
-
-        } if (final === "OOO") {
+          return true;
+        } else if (final === "OOO") {
           $("#gameMessageO").fadeIn()
 
           console.log("O is WINDER");
-        } if (turns === 5) {
+          return true;
+        } else if (turns === 5) {
           $("#gameMessageDraw").fadeIn()
 
           console.log("draw");
+          return false;
         }
       }
     }
+    return false;
   }
 
 
@@ -54,42 +59,58 @@ $(document).ready(function() {
   var playGame = function() {
     // encompassing if statement checking if a player has already taken a move in a box and prevents other player from changing it
     if ($(this).html() === "X" || $(this).html() === "O") {
-      return
-
-    } else {
-
-      var i;
-      turns +=1;
-      // if (player) {player = false} else player = true;
-
-      // if (player === true) {
-
-      // interaction with DOM to visually represent "X" on the gameboard.
-      $(this).html("X")
-      i = parseInt(this.id);
-      // pushes the players move into an array which assesses victory conditions
-      outcome[i] = "X";
-
-
-      // if statement evaluates players move and plays reactively to it depending where they have moved.
-      for (var i = 0; i < outcome.length; i++) {
-        if (outcome[i] === '_') {
-          outcome[i] = 'O';
-          $('#' + i.toString()).html("O");
-          break;
-        }
-      }
-
-      gameWon();
-
-      // I have eight victory conditions and 1 draw condition. players will only be notified of a draw if all moves have been taken. a means to do this is by perhaps looking at the inner html of all square classes to make sure that it has one thing in it or the other. once that criteria has been met, and if nobody has won, that is when a draw will be called.
-
-
-
+      return;
     }
 
+    var i;
+    turns +=1;
+    // if (player) {player = false} else player = true;
 
-  }
+    // if (player === true) {
+
+    // interaction with DOM to visually represent "X" on the gameboard.
+    $(this).html("X")
+    i = parseInt(this.id);
+    // pushes the players move into an array which assesses victory conditions
+    outcome[i] = "X";
+
+    gameOver = gameWon();
+    if( gameOver ) {
+      // human won!
+      return;  // don't let computer play its turn!
+    }
+
+    // if statement evaluates players move and plays reactively to it depending where they have moved.
+
+    // check for certain better-than-average moves and make them if possible
+
+    // 1. check if center id available and take it if so
+
+
+    // 2. check if any corner is available and take one
+
+    for (var i = 0; i < outcome.length; i++) {
+
+      if (outcome[4] === '_') {
+        outcome[4] = 'O';
+        $('#' + "4").html("O");
+        break;
+
+      } else if (true) {
+
+      } else if (outcome[i] === '_') {
+        outcome[i] = 'O';
+        $('#' + i.toString()).html("O");
+        break;
+      }
+    }
+
+    gameOver = gameWon();
+
+
+
+
+  }  //playGame end function
 
 
   $(".square").on("click", playGame);
