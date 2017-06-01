@@ -1,4 +1,15 @@
 
+#messageBox{
+  background-color: #e3c91b;
+  position: relative;
+  margin: 0 auto;
+  top: 80%;
+  height: 80px;
+  border-radius: 15px;
+  width: 65%;
+
+}
+
 #title {
   text-align: center;
   border: 2px solid #e3c91b;
@@ -11,38 +22,32 @@
 
 #gameMessageDraw{
   text-align: center;
-  position: inherit;
+  position: absolute;
   font-family: 'Quicksand', sans-serif;
   font-size: 28px;
   display: none;
-  top: 30%;
-  text-align: center;
-  /*border: 1px solid black;*/
-
+  top: -6%;
+  left: 42%;
 }
 
 #gameMessageX{
   text-align: center;
-  position: inherit;
+  position: absolute;
   font-family: 'Quicksand', sans-serif;
   font-size: 28px;
   display: none;
-  top: 30%;
-  text-align: center;
-  /*border: 1px solid black;*/
-
+  top: -6%;
+  left: 32%;
 }
 
 #gameMessageO{
-  top: 30%;
   text-align: center;
-  /*border: 1px solid black;*/
-  text-align: center;
-  position: inherit;
+  position: absolute;
   font-family: 'Quicksand', sans-serif;
   font-size: 28px;
   display: none;
-
+  top: -6%;
+  left: 32%;
 }
 
 
@@ -50,16 +55,6 @@ body{
   background-color: rgb(25, 24, 27);
 }
 
-footer{
-  background-color: #e3c91b;
-  position: relative;
-  margin: 0 auto;
-  top: 80%;
-  height: 80px;
-  border-radius: 15px;
-  width: 65%;
-
-}
 
 body, .container{
   position: absolute;
@@ -80,13 +75,6 @@ body, .container{
   font-size: 38px;
 
 }
-
-/*.row1, .row2, .row3{
-  background-color: #e5e5e5;
-  flex: 5;
-  display: flex;
-  flex-direction: row;
-}*/
 
 .row{
   background-color: black #e3c91b;
