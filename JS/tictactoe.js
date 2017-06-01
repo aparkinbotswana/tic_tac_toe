@@ -6,7 +6,7 @@ $(document).ready(function() {
   // var player = true
 
   var outcome = ["_", "_", "_", "_", "_", "_", "_", "_", "_"];
-
+  var turns = 0
   var winCondition = [
     [0, 1, 2],
     [3, 4, 5],
@@ -17,16 +17,41 @@ $(document).ready(function() {
     [0, 4, 8],
     [2, 4, 6]];
 
+
   var gameWon = function(){
+
     for (var i = 0; i < winCondition.length; i++) {
       condition = winCondition[i]
+        // console.log(winCondition[i]);
+        var win = []
       for (var j = 0; j < condition.length; j++) {
-        
+        var position = condition[j];
+        win.push(outcome[position]);
+        var final = win.join('')
+        console.log(final);
+
+        if (final === "XXX") {
+          $("#gameMessageX").fadeIn()
+
+          console.log("Winnder!");
+
+        } if (final === "OOO") {
+          $("#gameMessageO").fadeIn()
+
+          console.log("O is WINDER");
+        } if (turns === 5) {
+          $("#gameMessageDraw").fadeIn()
+
+          console.log("draw");
+        }
       }
     }
   }
 
-  var playGame = function(e) {
+
+
+
+  var playGame = function() {
     // encompassing if statement checking if a player has already taken a move in a box and prevents other player from changing it
     if ($(this).html() === "X" || $(this).html() === "O") {
       return
@@ -34,7 +59,7 @@ $(document).ready(function() {
     } else {
 
       var i;
-
+      turns +=1;
       // if (player) {player = false} else player = true;
 
       // if (player === true) {
@@ -44,6 +69,7 @@ $(document).ready(function() {
       i = parseInt(this.id);
       // pushes the players move into an array which assesses victory conditions
       outcome[i] = "X";
+
 
       // if statement evaluates players move and plays reactively to it depending where they have moved.
       for (var i = 0; i < outcome.length; i++) {

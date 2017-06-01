@@ -1,11 +1,48 @@
 
-p {
+#title {
   text-align: center;
-  border: 2px solid #6b2222;
+  border: 2px solid #e3c91b;
   border-radius: 15px;
-  color: #6b2222;
+  color: #e3c91b;
   font-size: 20px;
-  height: 90%;
+  font-family: 'Quicksand', sans-serif;
+
+}
+
+#gameMessageDraw{
+  text-align: center;
+  position: inherit;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 28px;
+  display: none;
+  top: 30%;
+  text-align: center;
+  /*border: 1px solid black;*/
+
+}
+
+#gameMessageX{
+  text-align: center;
+  position: inherit;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 28px;
+  display: none;
+  top: 30%;
+  text-align: center;
+  /*border: 1px solid black;*/
+
+}
+
+#gameMessageO{
+  top: 30%;
+  text-align: center;
+  /*border: 1px solid black;*/
+  text-align: center;
+  position: inherit;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 28px;
+  display: none;
+
 }
 
 
@@ -13,6 +50,16 @@ body{
   background-color: rgb(25, 24, 27);
 }
 
+footer{
+  background-color: #e3c91b;
+  position: relative;
+  margin: 0 auto;
+  top: 80%;
+  height: 80px;
+  border-radius: 15px;
+  width: 65%;
+
+}
 
 body, .container{
   position: absolute;
@@ -25,11 +72,12 @@ body, .container{
 
 .container {
   display: flex;
-  background-color: #6b2222;
+  background-color: black;
   border-radius: 15px;
   flex-direction: column;
   margin: 0 auto;
   border: 2px solid black;
+  font-size: 38px;
 
 }
 
@@ -41,7 +89,7 @@ body, .container{
 }*/
 
 .row{
-  background-color: #6b2222;
+  background-color: black #e3c91b;
   border-radius: 15px;
   flex: 5;
   display: flex;
@@ -50,7 +98,7 @@ body, .container{
 
 
 .square {
-  background-color: #6b2222;
+  background-color: #e3c91b;
   border-radius: 15px;
   flex: 4;
   display: flex;
@@ -58,5 +106,7 @@ body, .container{
   justify-content: center;
   flex-flow: column wrap;
   border: 2px solid black;
+  font-family: 'Quicksand', sans-serif;
+
 
 }
