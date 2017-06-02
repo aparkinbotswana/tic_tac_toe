@@ -41,6 +41,7 @@ $(document).ready(function() {
         } else if (turns === 5 && i === 7) {
 
           $("#gameMessageDraw").fadeIn()
+          $("#notTheBees").fadeIn()
           return false;
         }
       }

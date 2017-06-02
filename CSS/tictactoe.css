@@ -96,5 +96,10 @@ body, .container{
   border: 2px solid black;
   font-family: 'Quicksand', sans-serif;
 
+}
+
+#notTheBees{
+  display: none;
+  margin: 0 auto;
 
 }
