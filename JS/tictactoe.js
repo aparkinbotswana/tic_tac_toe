@@ -32,7 +32,6 @@ $(document).ready(function() {
         var final = win.join('')
         if (final === "XXX") {
           $("#gameMessageX").fadeIn()
-          console.log("win");
           return true;
 
         } else if (final === "OOO") {
@@ -40,7 +39,6 @@ $(document).ready(function() {
           return true;
 
         } else if (turns === 5 && i === 7) {
-          console.log("draw?");
 
           $("#gameMessageDraw").fadeIn()
           return false;
@@ -74,38 +72,91 @@ $(document).ready(function() {
 
     // following if statement and function evaluates players move and plays reactively to it.
 
-    var checkForPossibleWin = function(){
-// console.log("are you there?");
-      for (var i = 0; i < winCondition.length; i++) {
-        var mayWinCheck = winCondition[i]
-        var mayWin = []
-// console.log("i am here");
-          for (var j = 0; j < mayWinCheck.length; j++) {
-            var check = mayWinCheck[j];
-            mayWin.push(outcome[check]);
-            mayWin.sort();
-            var joinMayWin = mayWin.join("")
-            console.log(joinMayWin);
-// console.log("are you really?");
-            if (joinMayWin === "XX_") {
-              for (var k = 0; k < mayWinCheck.length; k++) {
-console.log("I promise");
-console.log(mayWinCheck[k]);
-                if (outcome[check] === "_") {
-                  console.log(outcome);
-                  console.log(outcome[check]);
-console.log("ummmm?");
+    var checkForOpponentWin = function () {
 
-                  outcome[k] = 'O';
-                  console.log(outcome[k]);
-                  $('#' + j.toString()).html("O");
-console.log("are you still there?");
-                }
-              }
-            }
+      for (var i = 0; i < winCondition.length; i++) {
+        var mayWinCheck = winCondition[i];
+        var mayWin = [];
+        var emptyIndex = null;
+        var xCount = 0;
+
+        // console.log("i am here");
+        for (var j = 0; j < mayWinCheck.length; j++) {
+
+          var checkIndex = mayWinCheck[ j ];
+          var squareValue = outcome[ checkIndex ];
+
+          if( squareValue === '_'){
+            // if we see an empty spot, save its index for later, in case it's the one we need to take
+            emptyIndex = checkIndex;
+          } else if( squareValue === 'X' ){
+            // if we see an X, increment our count of found Xs
+            xCount += 1;
           }
+        } // loop over each index of a win combo
+
+        if (xCount === 2) {
+          // play the move for O into the empty position
+          outcome[emptyIndex] = 'O';
+          console.log('blocked opponent win at:', emptyIndex, outcome[emptyIndex]);
+          $('#' + emptyIndex.toString()).html("O");
+          return true;
         }
-      }
+
+
+      } // loop over each win combo as a whole
+
+      return false;
+    };
+
+
+
+
+//     var checkForPossibleWin = function(){
+//       // debugger;
+//       var emptyIndex = null;
+//       var xCount = 0;
+//
+// // console.log("are you there?");
+//       for (var i = 0; i < winCondition.length; i++) {
+//         var mayWinCheck = winCondition[i]
+//         var mayWin = []
+// // console.log("i am here");
+//           for (var j = 0; j < mayWinCheck.length; j++) {
+//             var check = mayWinCheck[j];
+//             mayWin.push(outcome[check]);
+//
+//             // if we see an empty spot, save its index for later, in case it's the one we need to take
+//             if( outcome[check] === '_'){
+//               emptyIndex = check;
+//             } else if( outcome[check] === 'X' ){
+//               xCount += 1;
+//             }
+//
+//
+//             mayWin.sort();
+//             var joinMayWin = mayWin.join("")
+//             console.log(joinMayWin);
+// // console.log("are you really?");
+//             if (joinMayWin === "XX_") {
+//               for (var k = 0; k < mayWinCheck.length; k++) {
+// console.log("I promise");
+// console.log(mayWinCheck[k]);
+//                 if (outcome[check] === "_") {
+//                   console.log(outcome);
+//                   console.log(outcome[check]);
+// console.log("ummmm?");
+//
+//                   outcome[k] = 'O';
+//                   console.log(outcome[k]);
+//                   $('#' + k.toString()).html("O");
+// console.log("are you still there?");
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
 
       var randomMove = function() {
         for (var i = 0; i < outcome.length; i++) {
@@ -126,12 +177,16 @@ console.log("are you still there?");
         outcome[2] = 'O';
         $('#' + "2").html("O");
 
-      // } else if (turns >= 2) {
-      //   checkForPossibleWin();
+      } else if (turns >= 2) {
+        var found = checkForOpponentWin();
+        if(!found){
+          randomMove();
+        }
 
-      } else {
-        randomMove()
       }
+      // else {
+      //   randomMove()
+      // }
 
     gameOver = gameWon(); //computer won!
     console.log(outcome);
