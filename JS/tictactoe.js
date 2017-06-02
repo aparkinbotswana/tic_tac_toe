@@ -84,8 +84,6 @@ $(document).ready(function() {
 
           var checkIndex = mayWinCheck[ j ];
           var squareValue = outcome[ checkIndex ];
-console.log(squareValue);
-console.log(checkIndex);
           if( squareValue === '_'){
             // if we see an empty spot, save its index for later, in case it's the one we need to take
             emptyIndex = checkIndex;
@@ -95,11 +93,9 @@ console.log(checkIndex);
           }
         } // loop over each index of a win combo
 
-        console.log("this is emptyIndex " +emptyIndex);
         if ( xCount === 2 && emptyIndex !== null ) {
           // play the move for O into the empty position
           outcome[emptyIndex] = 'O';
-          console.log('blocked opponent win at:', emptyIndex, outcome[emptyIndex]);
           $('#' + emptyIndex.toString()).html("O");
           return true;
         }
