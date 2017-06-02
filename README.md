@@ -1,29 +1,17 @@
-# Top heading
+# Tic Tac Toe
 
-normal text-align
+This project represents my first attempt at creating a website from start to finish, which uses html, css, javascript and JQuery.
 
-## smaller heading
+My live, [Tic Tac Toe](https://aparkinbotswana.github.io/tic_tac_toe/Index_tictactoe.html) site can be found here.
 
-### even smaller heading
+## Features
 
-- first line
-- second lineN
+The main goal of this project was to program a computer opponent which would be able to detect if the player has two tokens placed in a row, and play to block the win.
 
-____
+## Bugs
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+An embedded Youtube video is meant to play once a draw has been determined. Unfortunately, the video autoplays as soon as the website has been loaded, rather than autoplaying and displaying once there is a draw.
 
-____
+## Acknowledgments
 
-here is [my live site](http://fillmurray.com)
-
-![fill murray](http://fillmurray.com/300/400)
-
-here is _italic text_
-
-here is __bold__
-
-```
-here is some code
-
-```
+Special thanks to my classmates, friends and instructors at General Assembly for helping me with this project.
