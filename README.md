@@ -4,7 +4,7 @@ This project represents my first attempt at creating a website from start to fin
 
 My live, [Tic Tac Toe](https://aparkinbotswana.github.io/tic_tac_toe/Index_tictactoe.html) site can be found here.
 
-![Alt text](/CSS/Images/Tictactoe?raw=true "Optional Title")
+![](/CSS/Images/Tictactoe?raw=true)
 
 ## Features
 
