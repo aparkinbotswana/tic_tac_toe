@@ -1,16 +1,9 @@
-
-
-
 $(document).ready(function() {
 
-
-  var outcome = ["_", "_", "_", "_", "_", "_", "_", "_", "_"];
-
-  var turns = 0;
-
-  var gameOver = false; // gameOver variable
-
-  var winCondition = [
+  let outcome = ["_", "_", "_", "_", "_", "_", "_", "_", "_"];
+  let turns = 0;
+  let gameOver = false; // gameOver letiable
+  let winCondition = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -21,15 +14,15 @@ $(document).ready(function() {
     [2, 4, 6]];
 
 
-  var gameWon = function(){
+  let gameWon = function(){
 
-    for (var i = 0; i < winCondition.length; i++) {
+    for (let i = 0; i < winCondition.length; i++) {
       condition = winCondition[i]
-        var win = []
-      for (var j = 0; j < condition.length; j++) {
-        var position = condition[j];
+        let win = []
+      for (let j = 0; j < condition.length; j++) {
+        let position = condition[j];
         win.push(outcome[position]);
-        var final = win.join('')
+        let final = win.join('')
         if (final === "XXX") {
           $("#gameMessageX").fadeIn()
           return true;
@@ -41,22 +34,25 @@ $(document).ready(function() {
         } else if (turns === 5 && i === 7) {
 
           $("#gameMessageDraw").fadeIn()
+          $("#notTheBees").attr("src", $("#notTheBees").attr("src").replace("autoplay=0", "autoplay=1"));
           $("#notTheBees").fadeIn()
+
+
           return false;
         }
       }
     }
     return false;
-  }// function called after every human and computer move to determine if there has been a win. turns variable is increased by one in every click function to determine when all moves have been made. if there is no win condition met when all boxes have been taken, it will declare a draw
+  }// function called after every human and computer move to determine if there has been a win. turns letiable is increased by one in every click function to determine when all moves have been made. if there is no win condition met when all boxes have been taken, it will declare a draw
 
 
-  var playGame = function() {
+  let playGame = function() {
     //  if statement checking if a player has already taken a move in a box and prevents them or the computer  from changing it
     if ($(this).html() === "X" || $(this).html() === "O") {
       return;
     }
 
-    var i;
+    let i;
     turns +=1;
 
     $(this).html("X")
@@ -73,17 +69,17 @@ $(document).ready(function() {
 
     // following if statement and function evaluates players move and plays reactively to it.
 
-    var checkForOpponentWin = function () {
-      for (var i = 0; i < winCondition.length; i++) {
-        var mayWinCheck = winCondition[i];
-        var mayWin = [];
-        var emptyIndex = null;
-        var xCount = 0;
+    let checkForOpponentWin = function () {
+      for (let i = 0; i < winCondition.length; i++) {
+        let mayWinCheck = winCondition[i];
+        let mayWin = [];
+        let emptyIndex = null;
+        let xCount = 0;
 
-        for (var j = 0; j < mayWinCheck.length; j++) {
+        for (let j = 0; j < mayWinCheck.length; j++) {
 
-          var checkIndex = mayWinCheck[ j ];
-          var squareValue = outcome[ checkIndex ];
+          let checkIndex = mayWinCheck[ j ];
+          let squareValue = outcome[ checkIndex ];
           if( squareValue === '_'){
             // if we see an empty spot, save its index for later, in case it's the one we need to take
             emptyIndex = checkIndex;
@@ -106,8 +102,8 @@ $(document).ready(function() {
       return false;
     };
 
-      var randomMove = function() {
-        for (var i = 0; i < outcome.length; i++) {
+      let randomMove = function() {
+        for (let i = 0; i < outcome.length; i++) {
           if (outcome[i] === '_') {
             outcome[i] = 'O';
             $('#' + i.toString()).html("O");
@@ -126,7 +122,7 @@ $(document).ready(function() {
         $('#' + "2").html("O");
 
       } else if (turns >= 2) {
-        var found = checkForOpponentWin();
+        let found = checkForOpponentWin();
         if(!found){
           randomMove();
         }
