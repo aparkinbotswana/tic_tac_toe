@@ -36,8 +36,6 @@ $(document).ready(function() {
           $("#gameMessageDraw").fadeIn()
           $("#notTheBees").attr("src", $("#notTheBees").attr("src").replace("autoplay=0", "autoplay=1"));
           $("#notTheBees").fadeIn()
-
-
           return false;
         }
       }
@@ -69,12 +67,13 @@ $(document).ready(function() {
 
     // following if statement and function evaluates players move and plays reactively to it.
 
-    let checkForOpponentWin = function () {
+    let checkForWins = function () {
       for (let i = 0; i < winCondition.length; i++) {
         let mayWinCheck = winCondition[i];
         let mayWin = [];
         let emptyIndex = null;
         let xCount = 0;
+        let oCount = 0;
 
         for (let j = 0; j < mayWinCheck.length; j++) {
 
@@ -83,13 +82,16 @@ $(document).ready(function() {
           if( squareValue === '_'){
             // if we see an empty spot, save its index for later, in case it's the one we need to take
             emptyIndex = checkIndex;
+          } else if( squareValue === 'O' ){
+            // if we see an O, increment our count of found Os
+            oCount += 1;
           } else if( squareValue === 'X' ){
             // if we see an X, increment our count of found Xs
             xCount += 1;
           }
         } // loop over each index of a win combo
 
-        if ( xCount === 2 && emptyIndex !== null ) {
+        if ( oCount === 2 && emptyIndex !== null || xCount === 2 && emptyIndex !== null ) {
           // play the move for O into the empty position
           outcome[emptyIndex] = 'O';
           $('#' + emptyIndex.toString()).html("O");
@@ -102,31 +104,32 @@ $(document).ready(function() {
       return false;
     };
 
-      let randomMove = function() {
-        for (let i = 0; i < outcome.length; i++) {
-          if (outcome[i] === '_') {
-            outcome[i] = 'O';
-            $('#' + i.toString()).html("O");
-            break;
-          }
+    let randomMove = function() {
+      console.log('random move made');
+      for (let i = 0; i < outcome.length; i++) {
+        if (outcome[i] === '_') {
+          outcome[i] = 'O';
+          $('#' + i.toString()).html("O");
+          break;
         }
       }
+    }
 
 
-      if (outcome[4] === '_') {
-        outcome[4] = 'O';
-        $('#' + "4").html("O");
+    if (outcome[4] === '_') {
+      outcome[4] = 'O';
+      $('#' + "4").html("O");
 
-      } else if (turns === 1 && outcome[2] === '_') {
-        outcome[2] = 'O';
-        $('#' + "2").html("O");
+    } else if (turns === 1 && outcome[2] === '_') {
+      outcome[2] = 'O';
+      $('#' + "2").html("O");
 
-      } else if (turns >= 2) {
-        let found = checkForOpponentWin();
-        if(!found){
-          randomMove();
-        }
+    } else if (turns >= 2) {
+      let found = checkForWins();
+      if(!found){
+        randomMove();
       }
+    }
 
     gameOver = gameWon(); //computer won!
     console.log(outcome);
